@@ -1,0 +1,27 @@
+/* .container-div{
+    overflow-y: hidden; width: 100%; min-height: 100%; 
+    background-image: url('/crowdmot-annotation-tool-react/src/apps/demo/components/DemoPage/images/login-uttower-resized.png');   
+    background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; opacity: 0.9;
+} */
+
+.inner-div{
+    float: right; position: fixed; top: 40%; left: 20%; background-color: #ffffff; border: 1px solid gray; height: 50%; width: 30%;
+}
+
+h4{
+    text-align: center; margin-top: 40px; font-size: large;
+}
+
+.form-style{
+    align-self: center; text-align: center; margin: auto; position: relative; top: 5%;
+}
+
+.input-style{
+    width: 70%; height: 30px; margin-bottom: 20px;
+}
+
+.submit-style{
+    font-size: 16px; background-color: #bf5700 !important; color: #ffffff; width: 120px; height: 35px; border: 0px;
+}

@@ -1,0 +1,40 @@
+.nav-wrapper{
+        overflow: hidden;
+        background-color: #ffffff;
+        position: relative;
+        top: 0;
+        width: 100%; float: left;
+        display: block;
+        color: #bf5700;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+}
+.image-logo{
+    object-fit: cover; 
+    float: left; 
+    margin-left: 20px;
+}
+
+.last-nav-link{
+    display: block; 
+    color: #bf5700; 
+    text-align: center; 
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px; 
+    float: right; 
+    margin-right: 50px;
+}
+
+.nav-link{
+    display: block; 
+    color: #bf5700; 
+    text-align: center; 
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px; 
+    float: right; 
+    margin-right: 20px;
+}

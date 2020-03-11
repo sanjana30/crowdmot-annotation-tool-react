@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+    <head>
+        <title> Nav bar Test Page </title>
+        <link type="css" style=""
+    </head>
+    <body style="margin: 0; padding: 0; overflow-x: auto; height: 100%; overflow-y: hidden;">
+        <!-- <div style=" overflow: hidden;
+        background-color: #ffffff;
+        position: fixed;
+        top: 0;
+        width: 100%; float: left;
+  display: block;
+  color: #bf5700;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;">
+   
+            <img src="./images/ut-logo-resized.png" alt="UT Austin Logo" style="object-fit: cover; float: left; margin-left: 20px;"></img>
+            <a href="#" style="float: left; display: block; color: #bf5700; text-align: center; padding: 14px 16px;text-decoration: none;
+            font-size: 17px; float: right; margin-right: 50px;">Log Out</a>
+            <a href="#" style="float: left; display: block; color: #bf5700; text-align: center; padding: 14px 16px;text-decoration: none;
+            font-size: 17px; float: right; margin-right: 20px;">Profile</a>
+            <a href="#" style="float: left; display: block; color: #bf5700; text-align: center; padding: 14px 16px;text-decoration: none;
+            font-size: 17px; float: right; margin-right: 20px;">Help</a>
+             <a href="#" style="float: left; display: block; color: #bf5700; text-align: center; padding: 14px 16px;text-decoration: none;
+             font-size: 17px; float: right; margin-right: 20px;">About</a>
+        </div> -->
+        
+        <div className="container-div">
+            <div className="inner-div">
+                <h4>Log-in or Sign-up</h5>
+                <form onSubmit={this.submitForm} className="form-style">
+                    <input type="text" placeholder="username" name="username" value={this.state.username} onChange={this.onChange} className="input-style"/>
+                    <br />
+                    <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.onChange} className="input-style"/>
+                    <br />
+                    <button type="submit" className="submit-style">Submit</button>
+
+                </form>
+            </div>
+        </div>
+        
+        
+    </body>
+</html>
