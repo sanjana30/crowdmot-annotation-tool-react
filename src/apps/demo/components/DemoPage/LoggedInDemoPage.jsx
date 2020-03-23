@@ -191,60 +191,60 @@ class LoggedInDemoPage extends Component {
 		})
 	}
 
-	getInterpolatedData = event => {
-		event.preventDefault();
+	// getInterpolatedData = event => {
+	// 	event.preventDefault();
 
-		const timeNow = (new Date()).getTime().toString(36);
-		let interpolatedResult = JSON.parse(JSON.stringify(this.state.result));
+	// 	const timeNow = (new Date()).getTime().toString(36);
+	// 	let interpolatedResult = JSON.parse(JSON.stringify(this.state.result));
 
-		for (let i = 0; i < interpolatedResult.annotations.length; i++) {
-			let annotIncidentLength = interpolatedResult.annotations[i].incidents.length
-			if (annotIncidentLength === 1) {
-				console.log("This is not possible :P")
-			}
-			else if (annotIncidentLength > 1) {
-				for (let j = 0; j < annotIncidentLength - 1; j++) {
-					const interpoArea1 = getInterpolatedData({
-						startIncident: interpolatedResult.annotations[i].incidents[j],
-						endIncident: interpolatedResult.annotations[i].incidents[j + 1],
-						currentTime: interpolatedResult.annotations[i].incidents[j + 1].time,
-						type: INTERPOLATION_TYPE.LENGTH,
-					});
-					const interpoPos1 = getInterpolatedData({
-						startIncident: interpolatedResult.annotations[i].incidents[j],
-						endIncident: interpolatedResult.annotations[i].incidents[j + 1],
-						currentTime: interpolatedResult.annotations[i].incidents[j + 1].time,
-						type: INTERPOLATION_TYPE.POSITION,
-					});
-					interpolatedResult.annotations[i].incidents.splice(j + 1, 0, ({
-						id: `${timeNow}`, name: `${timeNow}`, x: interpoPos1.x, y: interpoPos1.y, height: interpoArea1.height, width: interpoArea1.width, time: interpolatedResult.annotations[i].incidents[j + 1].time, status,
-					}));
+	// 	for (let i = 0; i < interpolatedResult.annotations.length; i++) {
+	// 		let annotIncidentLength = interpolatedResult.annotations[i].incidents.length
+	// 		if (annotIncidentLength === 1) {
+	// 			console.log("This is not possible :P")
+	// 		}
+	// 		else if (annotIncidentLength > 1) {
+	// 			for (let j = 0; j < annotIncidentLength - 1; j++) {
+	// 				const interpoArea1 = getInterpolatedData({
+	// 					startIncident: interpolatedResult.annotations[i].incidents[j],
+	// 					endIncident: interpolatedResult.annotations[i].incidents[j + 1],
+	// 					currentTime: interpolatedResult.annotations[i].incidents[j + 1].time,
+	// 					type: INTERPOLATION_TYPE.LENGTH,
+	// 				});
+	// 				const interpoPos1 = getInterpolatedData({
+	// 					startIncident: interpolatedResult.annotations[i].incidents[j],
+	// 					endIncident: interpolatedResult.annotations[i].incidents[j + 1],
+	// 					currentTime: interpolatedResult.annotations[i].incidents[j + 1].time,
+	// 					type: INTERPOLATION_TYPE.POSITION,
+	// 				});
+	// 				interpolatedResult.annotations[i].incidents.splice(j + 1, 0, ({
+	// 					id: `${timeNow}`, name: `${timeNow}`, x: interpoPos1.x, y: interpoPos1.y, height: interpoArea1.height, width: interpoArea1.width, time: interpolatedResult.annotations[i].incidents[j + 1].time, status,
+	// 				}));
 
-				}
-				let newAnnotLength = interpolatedResult.annotations[i].incidents.length
-				let finalIncident = interpolatedResult.annotations[i].incidents[annotIncidentLength-1]
-				const interpoArea = getInterpolatedData({
-					startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength-2],
-					endIncident: finalIncident,
-					currentTime: 1,
-					type: INTERPOLATION_TYPE.LENGTH,
-				});
-				const interpoPos = getInterpolatedData({
-					startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength-2],
-					endIncident: finalIncident,
-					currentTime: 1,
-					type: INTERPOLATION_TYPE.POSITION,
-				});
-				console.log("length= "+annotIncidentLength)
-				interpolatedResult.annotations[i].incidents.splice(newAnnotLength, 0, ({
-					id: `${timeNow}`, name: `${timeNow}`, x: interpoPos.x, y: interpoPos.y, height: interpoArea.height, width: interpoArea.width, time:1, status,
-				}));
-			}
+	// 			}
+	// 			let newAnnotLength = interpolatedResult.annotations[i].incidents.length
+	// 			let finalIncident = interpolatedResult.annotations[i].incidents[annotIncidentLength-1]
+	// 			const interpoArea = getInterpolatedData({
+	// 				startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength-2],
+	// 				endIncident: finalIncident,
+	// 				currentTime: 1,
+	// 				type: INTERPOLATION_TYPE.LENGTH,
+	// 			});
+	// 			const interpoPos = getInterpolatedData({
+	// 				startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength-2],
+	// 				endIncident: finalIncident,
+	// 				currentTime: 1,
+	// 				type: INTERPOLATION_TYPE.POSITION,
+	// 			});
+	// 			console.log("length= "+annotIncidentLength)
+	// 			interpolatedResult.annotations[i].incidents.splice(newAnnotLength, 0, ({
+	// 				id: `${timeNow}`, name: `${timeNow}`, x: interpoPos.x, y: interpoPos.y, height: interpoArea.height, width: interpoArea.width, time:1, status,
+	// 			}));
+	// 		}
 
-		}
-		this.setState({ interpolationResult: interpolatedResult });
-		document.getElementById("export-interpol").style.display = "block";
-	}
+	// 	}
+	// 	this.setState({ interpolationResult: interpolatedResult });
+	// 	document.getElementById("export-interpol").style.display = "block";
+	// }
 
 
 	handleSubmit = async event => {
@@ -482,7 +482,7 @@ class LoggedInDemoPage extends Component {
 						<Col>
 							<Button style={this.lowerButton2Style}><CSVLink data={JSON.stringify(result, null, 2)} style={{ color: 'white' }}>Download Raw Data</CSVLink></Button>
 						</Col>
-						<Col style={this.lowerButtonCol1Style}>
+						{/* <Col style={this.lowerButtonCol1Style}>
 							<Button color="secondary" style={this.lowerButton1Style} onClick={this.getInterpolatedData}>Generate Interpolated Data</Button>
 						</Col>
 						<Col>
@@ -492,7 +492,7 @@ class LoggedInDemoPage extends Component {
 								border: `1px solid #bf5700`,
 							}} onClick={this.createTable}>Download Interpolated Data</Button>
 
-						</Col>
+						</Col> */}
 					</Row>
 					{/* <Row className="my-3 col-xs-12">
 						<Col>

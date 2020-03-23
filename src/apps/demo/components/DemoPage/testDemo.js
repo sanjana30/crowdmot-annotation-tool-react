@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import Logo from './images/ut-logo-resized.png';
 import { Link, Switch, Route, BrowserRouter } from 'react-router-dom';
 import Instructions from "./videoInstruction"
-import { getInterpolatedData, INTERPOLATION_TYPE } from '/Users/sanjanatripathi/Desktop/crowdmot-annotation-tool-react/src/apps/two-dimensional-video/utils/interpolationUtils.js';
+//import { getInterpolatedData, INTERPOLATION_TYPE } from '/Users/sanjanatripathi/Desktop/crowdmot-annotation-tool-react/src/apps/two-dimensional-video/utils/interpolationUtils.js';
 import { CSVLink, CSVDownload } from "react-csv";
 import { array } from 'prop-types';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
