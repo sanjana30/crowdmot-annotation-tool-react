@@ -8,6 +8,14 @@ module.exports = merge(common, {
 	mode: 'development',
 	devtool: 'eval',
 	entry: 'apps/demo/index.js',
+	// entry: {
+	// 	    index: 'apps/demo/index.js',
+	// 	     another: 'apps/demo/another-module.js',
+	// 	     index: { import: 'apps/demo/index.js', dependOn: 'shared' },
+	// 	     another: { import: 'apps/demo/another-module.js', dependOn: 'shared' },
+	// 	     shared: 'lodash',
+	// 		},
+			
 	entry: {
 		app: [
 		  'react-app-polyfill/ie9', // Only if you want to support IE 9

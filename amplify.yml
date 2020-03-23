@@ -1,0 +1,22 @@
+version: 0.1
+# backend:
+#   phases:
+#     build:
+#       commands:
+#         - yum -y install python3-setuptools python3-pip python3-wheel python3-devel
+#         - pip3 install awsebcli --upgrade --user
+#         - make deploy-backend
+frontend:
+  phases:
+    # IMPORTANT - Please verify your build commands ;;;;
+    build:
+      commands:
+        - npm build
+        - npm start
+  artifacts:
+    # IMPORTANT - Please verify your build output directory
+    baseDirectory: public
+    files:
+      - '*/'
+  cache:
+    paths: []

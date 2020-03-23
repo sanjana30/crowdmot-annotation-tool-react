@@ -257,23 +257,43 @@ class testDemo extends Component {
 
 				}
 				let newAnnotLength = interpolatedResult.annotations[i].incidents.length
-				let finalIncident = interpolatedResult.annotations[i].incidents[annotIncidentLength - 1]
-				const interpoArea = getInterpolatedData({
-					startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength - 2],
-					endIncident: finalIncident,
-					currentTime: 1,
-					type: INTERPOLATION_TYPE.LENGTH,
-				});
-				const interpoPos = getInterpolatedData({
-					startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength - 2],
-					endIncident: finalIncident,
-					currentTime: 1,
-					type: INTERPOLATION_TYPE.POSITION,
-				});
-				console.log("length= " + annotIncidentLength)
-				interpolatedResult.annotations[i].incidents.splice(newAnnotLength, 0, ({
-					id: `${timeNow}`, name: `${timeNow}`, x: interpoPos.x, y: interpoPos.y, height: interpoArea.height, width: interpoArea.width, time: 1, status,
-				}));
+				const finalSource = interpolatedResult.annotations[i].incidents[annotIncidentLength - 2]
+				const finalTarget = interpolatedResult.annotations[i].incidents[annotIncidentLength - 1]
+				const final_tdiff = (finalTarget.time * timerate) - (finalSource.time * timerate)
+				const final_xSlope = (finalTarget.x - finalSource.x)/final_tdiff
+				const final_ySlope = (finalTarget.y - finalSource.y)/final_tdiff
+				const final_wSlope = (finalTarget.width - finalSource.width)/final_tdiff
+				const final_hSlope = (finalTarget.height - finalSource.height)/final_tdiff
+				const final_sFrame = Math.round(finalSource.time * timerate)
+				const final_tFrame = Math.round(finalTarget.time * timerate)
+				for (let m=final_sFrame+1; m<=final_tFrame; m++){
+					let final_off = m - Math.round(finalSource.time * timerate)
+					let final_interpolX = finalSource.x + (final_xSlope * final_off)
+					let final_interpolY = finalSource.y + (final_ySlope * final_off)
+					let final_interpolW = finalSource.width + (final_wSlope * final_off)
+					let final_interpolH = finalSource.height + (final_ySlope * final_off)
+					
+					interpolatedResult.annotations[i].incidents.splice(newAnnotLength, 0, ({
+						id: `${timeNow}`, name: `${timeNow}`, x: final_interpolX, y: final_interpolY, height: final_interpolH, width: final_interpolW, time: m, status,
+					}));
+				}
+				// let finalIncident = interpolatedResult.annotations[i].incidents[annotIncidentLength - 1]
+				// const interpoArea = getInterpolatedData({
+				// 	startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength - 2],
+				// 	endIncident: finalIncident,
+				// 	currentTime: 1,
+				// 	type: INTERPOLATION_TYPE.LENGTH,
+				// });
+				// const interpoPos = getInterpolatedData({
+				// 	startIncident: interpolatedResult.annotations[i].incidents[annotIncidentLength - 2],
+				// 	endIncident: finalIncident,
+				// 	currentTime: 1,
+				// 	type: INTERPOLATION_TYPE.POSITION,
+				// });
+				
+				// interpolatedResult.annotations[i].incidents.splice(newAnnotLength, 0, ({
+				// 	id: `${timeNow}`, name: `${timeNow}`, x: interpoPos.x, y: interpoPos.y, height: interpoArea.height, width: interpoArea.width, time: 1, status,
+				// }));
 			}
 
 		}
