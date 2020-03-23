@@ -11,6 +11,7 @@ frontend:
     # IMPORTANT - Please verify your build commands ;;;;
     build:
       commands:
+        - npm install
         - npm run build
         - npm start
   artifacts:
